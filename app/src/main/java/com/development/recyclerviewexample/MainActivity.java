@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -11,9 +12,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private RecyclerViewAdapter adapter;
+
     private ArrayList<String> countryNamelist = new ArrayList<>();
     private ArrayList<String> detailsList = new ArrayList<>();
     private ArrayList<Integer> imageList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +38,8 @@ public class MainActivity extends AppCompatActivity {
         imageList.add(R.drawable.unitedkingdom);
         imageList.add(R.drawable.germany);
         imageList.add(R.drawable.usa);
+
+        adapter = new RecyclerViewAdapter(countryNamelist,detailsList,imageList,MainActivity.this);
+        recyclerView.setAdapter(adapter);
     }
 }
